@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cubit_app/misc/colors.dart';
 import 'package:flutter_cubit_app/widgets/app_large_text.dart';
@@ -12,6 +11,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+  var images = {
+    "balloning.png": "Balloning",
+    "hiking.png": "Hiking",
+    "kayaking.png": "Kayaking",
+    "snorkling.png": "Snorkling"
+  };
+
   @override
   Widget build(BuildContext context) {
     TabController _tabController = TabController(length: 3, vsync: this);
@@ -21,7 +27,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         children: [
           //menu text
           Container(
-            padding: const EdgeInsets.only(top: 70, left: 20),
+            padding: const EdgeInsets.only(top: 50, left: 20),
             child: Row(
               children: [
                 const Icon(
@@ -42,7 +48,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             ),
           ),
           const SizedBox(
-            height: 40,
+            height: 30,
           ),
           //discover text
           Container(
@@ -110,7 +116,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             ),
           ),
           const SizedBox(
-            height: 20,
+            height: 10,
           ),
           Container(
             margin: const EdgeInsets.only(left: 20, right: 20),
@@ -132,7 +138,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             height: 10,
           ),
           Container(
-            height: 100,
+            height: 120,
             width: double.maxFinite,
             margin: const EdgeInsets.only(left: 20),
             child: ListView.builder(
@@ -149,14 +155,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
                             color: Colors.white,
-                            image: const DecorationImage(
-                                image: AssetImage("img/mountain.jpeg"),
+                            image: DecorationImage(
+                                image: AssetImage(
+                                  "img/" + images.keys.elementAt(index),
+                                ),
                                 fit: BoxFit.cover),
                           ),
                         ),
+                        const SizedBox(height: 10,),
                         Container(
                           child: AppText(
-                            text: "Kayaking",
+                            text: images.values.elementAt(index),
                             color: AppColors.textColor2,
                           ),
                         )
